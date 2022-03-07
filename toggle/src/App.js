@@ -1,8 +1,6 @@
-import './App.css';
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div className="bg-red-600">
       <button>Toggle Light Switch</button>
     </div>
   );
