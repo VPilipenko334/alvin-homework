@@ -3,11 +3,13 @@ import { useState } from 'react';
 const App = () => {
 
   const [light, setLight] = useState(true);
+  
+  const changeColor = light ? 'bg-pink-200' : 'bg-cyan-300'
 
   console.log({ light })
 
   return (
-    <div className="h-screen bg-slate-100">
+    <div className={`h-screen bg-slate-100 ${changeColor}`}>
       <button 
         className="border-2 border-neutral-300 px-2 py-5"
         onClick={() => setLight(!light)}
