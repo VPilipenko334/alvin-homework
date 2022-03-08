@@ -9,14 +9,17 @@ run ```npm start``` to start the server in your terminal and you should be ready
 ## Step 1: 
 Add the tailwind script to your index.html file, which can be found under ./public/index.html.
 
-The script should be: ```<script src="https://cdn.tailwindcss.com"></script>```
+The script should be: 
+```js
+<script src="https://cdn.tailwindcss.com"></script>
+```
 
 ## Step 2: 
 Once the script is added, hop into ./src/App.js and start coding. 
 
 The first thing we will do is add a simple dropdown. This can be done using: 
 
-``` 
+```js
    <select> 
      <option value="color-a">color A</option>
      <option value="color-b">color B</option>
@@ -28,7 +31,7 @@ The first thing we will do is add a simple dropdown. This can be done using:
   
   It should look like this: 
   
-  ``` 
+  ```js 
     <select>
       <option value="bg-amber-200">color A</option>
       <option value="bg-slate-800">color B</option>
@@ -39,18 +42,22 @@ The first thing we will do is add a simple dropdown. This can be done using:
   ## Step 3: 
   Here, we are going to create our hook. First, you will need to import { useState } from react. 
 
-  ```import { useState } from 'react';```
+  ```js
+  import { useState } from 'react';
+  ```
   
   Then, you can form your hook: 
   
-  ```const [color, setColor] = useState("bg-slate-800");``` 
+  ```js
+  const [color, setColor] = useState("bg-slate-800");
+  ``` 
   
   you want your first color to be your initial color. 
   
   ## Step 4: 
   Here, we want to build our handler --> the function should look like this: 
   
-  ``` 
+  ```js
   const handleChange = (e) => {
     setColor(e.target.value)
   } 
@@ -60,7 +67,7 @@ The first thing we will do is add a simple dropdown. This can be done using:
   
   Now, we have to implement the handler wherever the change is occuring: the dropdown. In our ```<select>``` tag, we must add: 
   
- ```   
+ ```js 
  value={color}
  onChange={handleChange} 
  ```
