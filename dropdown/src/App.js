@@ -1,8 +1,19 @@
+import { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [color, setColor] = useState("bg-slate-800");
   return (
-    <div className="App">
-      <h1> Hello this is my app </h1>
+    <div
+      className={`h-screen flex justify-center items-center ${color}`}
+    >
+      <select
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+      >
+        <option value="bg-amber-200">color A</option>
+        <option value="bg-slate-800">color B</option>
+        <option value="bg-blue-400">color C</option>
+      </select>
     </div>
   );
 }
