@@ -9,7 +9,7 @@ const App = () => {
   console.log({ light })
 
   return (
-    <div className={`h-screen bg-slate-100 ${changeColor}`}>
+    <div className={ light ? 'h-screen bg-pink-200' : 'h-screen bg-cyan-300' }>
       <button 
         className="border-2 border-neutral-300 px-2 py-5"
         onClick={() => setLight(!light)}
@@ -21,3 +21,6 @@ const App = () => {
 }
 
 export default App;
+
+
+{/* <div className={`h-screen bg-slate-100 ${changeColor}`}> */ }
