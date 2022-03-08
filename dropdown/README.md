@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# How to build a dropdown with changing background colors in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+first, run ```npx create-react-app (app name)``` in order to create a new React project. I will be calling this project 'dropdown'. Once the React app loads - run ```npm install``` to install all the proper dependencies. 
 
-## Available Scripts
+```code .``` into the project in order to open up your coding system and edit the skeleton of the code as needed. 
 
-In the project directory, you can run:
+run ```npm start``` to start the server in your terminal and you should be ready to code. 
 
-### `npm start`
+## Step 1: 
+Add the tailwind script to your index.html file, which can be found under ./public/index.html.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The script should be: ```<script src="https://cdn.tailwindcss.com"></script>```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Step 2: 
+Once the script is added, hop into ./src/App.js and start coding. 
 
-### `npm test`
+The first thing we will do is add a simple dropdown. This can be done using: 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+``` 
+   <select> 
+     <option value="color-a">color A</option>
+     <option value="color-b">color B</option>
+     <option value="color-c">color C</option>
+   </select> 
+ ```
+   
+  Once this is complete, you can choose the colors using tailwindcss and replace them in the value. 
+  
+  It should look like this: 
+  
+  ``` 
+    <select>
+      <option value="bg-amber-200">color A</option>
+      <option value="bg-slate-800">color B</option>
+      <option value="bg-blue-400">color C</option>
+    </select>
+  ```
+  
+  ## Step 3: 
+  Here, we are going to create our hook. First, you will need to import { useState } from react. 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  ```import { useState } from 'react';```
+  
+  Then, you can form your hook: 
+  
+  ```const [color, setColor] = useState("bg-slate-800");``` 
+  
+  you want your first color to be your initial color. 
+  
+  ## Step 4: 
+  Here, we want to build our handler --> the function should look like this: 
+  
+  ``` 
+  const handleChange = (e) => {
+    setColor(e.target.value)
+  } 
+  ```
+  
+  The e will stand for event, therefore, once the event is clicked, the color should change. 
+  
+  Now, we have to implement the handler wherever the change is occuring: the dropdown. In our ```<select>``` tag, we must add: 
+  
+ ```   
+ value={color}
+ onChange={handleChange} 
+ ```
+ This will indicate that once the handler in clicked, the value of the color will change. 
+ 
+ ## Step 5: 
+ 
+ Test our your code and you should be finished!
