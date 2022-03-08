@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# How to build a toggle light switch in React 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In order to build a toggle light switch in React, we have to learn the basics of how to implement core React concepts - such as hooks. 
 
-## Available Scripts
+first, run ```npx create-react-app (app name)``` in order to create a new React project. I will be calling this project 'toggle-light'. Once the React app loads - run ```npm install``` to install all the proper dependencies. 
 
-In the project directory, you can run:
+```code .``` into the project in order to open up your coding system and edit the skeleton of the code as needed. 
 
-### `npm start`
+run ```npm start``` to start the server in your terminal and you should be ready to code. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Step 1: 
+Add the tailwind script to your index.html file, which can be found under ./public/index.html.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The script should be: ```<script src="https://cdn.tailwindcss.com"></script>```
 
-### `npm test`
+## Step 2: 
+Once the script is added, hop into ./src/App.js and start coding. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The first thing we want to do here is add a simple button and build on from there 
 
-### `npm run build`
+```<button>Toggle Light</button>```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once your button is created, you can add additional styles to it based on your preference using tailwindcss. The specific ones that I used were flex, h-screen (to take up the height of the screen), justify-center and items-center in order to center the button on the page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Step 3: 
+This is the part where turn the static button into a more dynamic object -- we will be using React hooks. First, you need to import the { useState } hook from 'react'. It should look like this: 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```import { useState } from 'react';```
 
-### `npm run eject`
+Once that is complete, you can create your hook, which should look like this: 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```const [light, setLight] = useState(true);```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+we set our initial state to true because the light is already on and in order to turn it off, we would need to be doing the opposite of that. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+*you can also test your state in the console by doing console.log(light) or console.log( {light} ) to get a key and a value. You should see something like light: true in the console.*
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Step 4: 
+Once we have our hook, we can creare an onClick function for our button: 
 
-## Learn More
+```onClick={() => setLight(!light)}```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The reason that we need a callback is because the button needs to be clicked in order for the color to change, and the reason that we would make our setter !light (as opposed to just a 'false' boolean) is because our light switch needs to toggle, which means it needs to turn on and off - hence, have opposing state, therefore, dynamically, the light is either on or off and our colors toggle between one another. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Step 5:
+Once the above steps are complete, you can now start adding colors. I chose to toggle between a light violet shade and a light green shade. There are a couple ways to do this -- the first would look like this: 
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```<div className={light ? 'bg-violet-200' : 'bg-emerald-200'}>```
+  
+In this case, you would just be writing a ternary statement in the div. If the light is on, the background is pink, and if the button is clicked/ the light is off, the background would turn emerald green. 
+  
+Another way to write this would be as follows: 
+ 
+```const changeColor = light ? 'bg-violet-200' : 'bg-emerald-200'```  
+  
+```<div className={`h-screen bg-slate-100 flex justify-center items-center ${changeColor}`}>```
+   
+ Here, we are interpolating our changeColor ternary in order to DRY up our code. 
+   
+ ## Step 6: 
+ Once you are finished with all the above steps, test out your code and you are finished!
