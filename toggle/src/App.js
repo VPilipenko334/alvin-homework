@@ -4,14 +4,14 @@ const App = () => {
 
   const [light, setLight] = useState(true);
   
-  const changeColor = light ? 'bg-pink-200' : 'bg-cyan-300'
+  const changeColor = light ? 'bg-violet-200' : 'bg-emerald-200'
 
   console.log({ light })
 
   return (
-    <div className={ light ? 'h-screen bg-pink-200' : 'h-screen bg-cyan-300' }>
+    <div className={`h-screen bg-slate-100 flex justify-center items-center ${changeColor}`}> 
       <button 
-        className="border-2 border-neutral-300 px-2 py-5"
+        className="border-2 border-neutral-300 px-2 py-2 rounded-full bg-indigo-50 font-light text-small"
         onClick={() => setLight(!light)}
         >
          Toggle Light Switch
@@ -23,4 +23,4 @@ const App = () => {
 export default App;
 
 
-{/* <div className={`h-screen bg-slate-100 ${changeColor}`}> */ }
+{/* <div className={light ? 'h-screen bg-pink-200' : 'h-screen bg-cyan-300'}> */}
